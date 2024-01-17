@@ -23,6 +23,7 @@
  */
 
 require('../../config.php');
+require_once($CFG->dirroot.'/local/greetings/lib.php');
 
 require_login();
 
@@ -37,13 +38,20 @@ echo $OUTPUT->header();
 
 // Custom greeting message if loggedin.
 if (isloggedin()) {
-    echo '<h3>Greegins, ' . fullname($USER) . '</h3>';
+    echo local_greetings_get_greeting($USER);
 } else {
-    echo '<h3>Greetings, user</h3>';
+    echo get_string('greetinguser', 'local_greetings');
 }
+
+echo '<br />';
+
 echo html_writer::tag('input', '', [
   'type' => 'text',
   'name' => 'username',
-  'placeholder' => get_string('typeyourname', 'local_greetings'),
+  'placeholder' => local_greetings_type_your_name($USER),
 ]);
+
+echo html_writer::tag('h4', get_string('thecurrenttimeis', 'local_greetings'));
+echo userdate(time(), get_string('strftimedaydate', 'core_langconfig'));
+
 echo $OUTPUT->footer();

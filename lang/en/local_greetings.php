@@ -26,4 +26,13 @@
 defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Greetings';
+$string['pluginnamees'] = 'Saludador';
 $string['typeyourname'] = 'Type your name';
+$string['typeyournamees'] = 'Escribe tu nombre';
+$string['greetinguser'] = 'Greetings.';
+$string['greetinguseres'] = 'Hola, {$a}.';
+$string['greetinguserfj'] = 'Bula, {$a}.';
+$string['greetingusernz'] = 'Kia Ora, {$a}.';
+$string['greetingloggedinuser'] = 'Greetings, {$a}.';
+$string['greetingloggedinuseres'] = 'Hola, {$a}.';
+$string['thecurrenttimeis'] = 'The current time is: ';
