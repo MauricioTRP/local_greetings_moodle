@@ -53,6 +53,36 @@ function local_greetings_get_greeting( $user ) {
 }
 
 /**
+ * Localization of pluginname
+ *
+ * @param [type] $user
+ * @return string
+ */
+function local_greetings_pluginname($user) {
+    if ($user == null) {
+        return get_string('pluginname', 'local_greetings');
+    }
+
+    $language = $user->lang;
+    switch ($language) {
+        case 'es':
+            $langstr = 'pluginnamees';
+            break;
+        case 'nz':
+            $langstr = 'pluginnamenz';
+            break;
+        case 'fj':
+            $langstr = 'pluginnamefj';
+            break;
+        default :
+            $langstr = 'pluginname';
+            break;
+    }
+
+    return get_string($langstr, 'local_greetings');
+}
+
+/**
  * Type your name localization
  *
  * @param std::Class $user
@@ -74,4 +104,37 @@ function local_greetings_type_your_name($user) {
     }
 
     return get_string($langstr, 'local_greetings');
+}
+
+/**
+ * Insert a link to index.php on the site front page navigation menu.
+ *
+ * @param navigation_node $frontpage Node representing the front page in the navigation tree
+ * @param std::class $user
+ * @return void
+ */
+function local_greetings_extend_navigation_frontpage(navigation_node $frontpage, $user) {
+    $frontpage->add(
+        local_greetings_pluginname($user),
+        new moodle_url('/local/greetings/index.php')
+    );
+}
+
+/**
+ * Inserts a link to index.php on the menu
+ *
+ * @param global_navigation $root
+ * @return void
+ */
+function local_greetings_extend_navigation(global_navigation $root) {
+    $node = navigation_node::create(
+        get_string('pluginname', 'local_greetings'),
+        new moodle_url('/local/greetings/index.php'),
+        navigation_node::TYPE_CUSTOM,
+        null,
+        null,
+        new pix_icon('t/message', 'message')
+    );
+
+    $root->add_node($node);
 }

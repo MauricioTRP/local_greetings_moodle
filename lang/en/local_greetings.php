@@ -27,6 +27,8 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['pluginname'] = 'Greetings';
 $string['pluginnamees'] = 'Saludador';
+$string['pluginnamenz'] = 'KiaOra';
+$string['pluginnamefj'] = 'BulaBula';
 $string['typeyourname'] = 'Type your name';
 $string['typeyournamees'] = 'Escribe tu nombre';
 $string['greetinguser'] = 'Greetings.';

@@ -51,6 +51,8 @@ echo html_writer::tag('input', '', [
   'placeholder' => local_greetings_type_your_name($USER),
 ]);
 
+echo var_dump($CFG->lang);
+
 echo html_writer::tag('h4', get_string('thecurrenttimeis', 'local_greetings'));
 echo userdate(time(), get_string('strftimedaydate', 'core_langconfig'));
 
