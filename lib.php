@@ -107,6 +107,29 @@ function local_greetings_type_your_name($user) {
 }
 
 /**
+ * Set please enter email localization
+ *
+ * @param std::class $user
+ * @return string
+ */
+function local_greetings_type_email($user) {
+    if ($user == null) {
+        return get_string('pleaseenteremail', 'local_greetings');
+    }
+
+    $language = $user->lang;
+    switch ($language) {
+        case 'es':
+            $langstr = 'pleaseenteremailes';
+            break;
+        default:
+            $langstr = 'pleaseenteremail';
+            break;
+    }
+
+    return get_string($langstr, 'local_greetings');
+}
+/**
  * Insert a link to index.php on the site front page navigation menu.
  *
  * @param navigation_node $frontpage Node representing the front page in the navigation tree

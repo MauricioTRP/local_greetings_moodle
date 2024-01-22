@@ -38,3 +38,6 @@ $string['greetingusernz'] = 'Kia Ora, {$a}.';
 $string['greetingloggedinuser'] = 'Greetings, {$a}.';
 $string['greetingloggedinuseres'] = 'Hola, {$a}.';
 $string['thecurrenttimeis'] = 'The current time is: ';
+$string['pleaseenteremail'] = 'Please enter email';
+$string['pleaseenteremailes'] = 'Ingrese correo, por favor';
+$string['yourmessage'] = 'Your Message';

@@ -36,7 +36,8 @@ $PAGE->set_heading(get_string('pluginname', 'local_greetings'));
 
 echo $OUTPUT->header();
 
-// Custom greeting message if loggedin.
+// Custom greeting message if loggedin
+// e.g. "Hola, {name} Usuario.
 if (isloggedin()) {
     echo local_greetings_get_greeting($USER);
 } else {
@@ -45,13 +46,15 @@ if (isloggedin()) {
 
 echo '<br />';
 
-echo html_writer::tag('input', '', [
-  'type' => 'text',
-  'name' => 'username',
-  'placeholder' => local_greetings_type_your_name($USER),
-]);
+$messageform = new \local_greetings\form\message_form();
 
-echo var_dump($CFG->lang);
+$messageform->display();
+
+if ($data = $messageform->get_data()) {
+    $message = required_param('message', PARAM_TEXT);
+
+    echo $OUTPUT->heading($message, 4);
+}
 
 echo html_writer::tag('h4', get_string('thecurrenttimeis', 'local_greetings'));
 echo userdate(time(), get_string('strftimedaydate', 'core_langconfig'));
